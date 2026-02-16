@@ -1,0 +1,32 @@
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="scandit-cordova-datacapture-label-text" version="8.2.0">
+    <name>ScanditLabelText</name>
+    <engines>
+        <engine name="cordova-ios" version=">=5.0.0" />
+        <engine name="cordova-android" version=">=10.0.0" />
+    </engines>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="ScanditLabelText">
+                <param name="ios-package" value="ScanditLabelTextPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/ScanditLabelTextPlugin-Bridging-Header.h" type="BridgingHeader" />
+        <source-file src="src/ios/ScanditLabelTextPlugin.swift" />
+        <podspec>
+            <pods use-frameworks="true">
+                <pod name="ScanditLabelCaptureText" spec="= 8.2.0" />
+            </pods>
+        </podspec>
+    </platform>
+    <platform name="android">
+        <config-file parent="/*" target="config.xml">
+            <feature name="ScanditLabelText">
+                <param name="android-package" value="com.scandit.datacapture.cordova.labeltext.ScanditLabelText" />
+            </feature>
+        </config-file>
+        <source-file src="src/android/ScanditLabelText.kt" target-dir="kotlin/com/scandit/datacapture/cordova/labeltext" />
+        <framework custom="true" src="src/android/build.gradle" type="gradleReference" />
+        <hook src="src/hooks/support-kotlin.js" type="after_plugin_install" />
+    </platform>
+</plugin>
